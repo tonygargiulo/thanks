@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import unirest from 'unirest';
-
+import apiConfig from './apiKeys';
 
 class App extends Component {
 constructor() {
@@ -19,7 +19,7 @@ componentDidMount() {
   }.bind(this);
 
   unirest.get("https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous&count=1")
-  .header("X-Mashape-Key", "O0zcIULtz7mshklYZAlz3XGmQSAep1JMiogjsnbd6BUjlfLmv8")
+  .header("X-Mashape-Key", apiConfig.QUOTE_API_KEY)
   .header("X-Mashape-Host", "andruxnet-random-famous-quotes.p.mashape.com")
   .end(afterReq);
 };
