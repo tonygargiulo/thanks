@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import unirest from 'unirest';
+import axios from 'axios';
 import apiConfig from '../apiKeys';
 
 // Quote fetches and displays a random quote
@@ -16,16 +16,17 @@ getQuote(){
   //set state with new quote after API call
   let updateQuote = function (result) {
     // check status code and if quote and author exist
-    if (result.body[0].quote && result.body[0].author && result.statusCode === 200){
+    if (result.data[0].quote && result.data[0].author && result.status === 200){
       // format quote strings
-      let displayQuote = `"${result.body[0].quote}"`;
-      let displayAuthor = `-${result.body[0].author}`;
+      let displayQuote = `"${result.data[0].quote}"`;
+      let displayAuthor = `-${result.data[0].author}`;
       //set state to fetched quote
       this.setState({
           quote: displayQuote,
           author: displayAuthor,
       });
     } else {
+      console.log('Error fetching quote');
       //set state to backup quote
       this.setState({
           quote: '"Do not take life too seriously. You will never get out of it alive."',
@@ -34,15 +35,21 @@ getQuote(){
     };
 }.bind(this);
 
-// API GET request
-unirest.get("https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous&count=1")
-  .header("X-Mashape-Key", apiConfig.QUOTE_API_KEY)
-  .header("X-Mashape-Host", "andruxnet-random-famous-quotes.p.mashape.com")
-  .end(updateQuote);
+axios.get("https://andruxnet-random-famous-quotes.p.mashape.com/", {
+  params: { // get 1 famous quote
+    'cat': 'famous',
+    'count': '1'
+  },
+  headers: { // get your own API key at https://rapidapi.com/andruxnet/api/Random%20Famous%20Quotes
+    "X-Mashape-Key": apiConfig.QUOTE_API_KEY,
+    "X-Mashape-Host": "andruxnet-random-famous-quotes.p.mashape.com"
+  }
+}).then(updateQuote);
+
 };
 
 componentDidMount() {
-  this.getQuote();
+  this.getQuote(); //includes API request and setting state
 };
 
 render() {
