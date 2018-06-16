@@ -33,18 +33,18 @@ getQuote(){
           author: '-Elbert Hubbard',
         });
     };
-}.bind(this);
+  }.bind(this);
 
-axios.get("https://andruxnet-random-famous-quotes.p.mashape.com/", {
-  params: { // get 1 famous quote
-    'cat': 'famous',
-    'count': '1'
-  },
-  headers: { // get your own API key at https://rapidapi.com/andruxnet/api/Random%20Famous%20Quotes
-    "X-Mashape-Key": apiConfig.QUOTE_API_KEY,
-    "X-Mashape-Host": "andruxnet-random-famous-quotes.p.mashape.com"
-  }
-}).then(updateQuote);
+  axios.get("https://andruxnet-random-famous-quotes.p.mashape.com/", {
+    params: { // get 1 famous quote
+      'cat': 'famous',
+      'count': '1'
+    },
+    headers: { // get your own API key at https://rapidapi.com/andruxnet/api/Random%20Famous%20Quotes
+      "X-Mashape-Key": apiConfig.QUOTE_API_KEY,
+      "X-Mashape-Host": "andruxnet-random-famous-quotes.p.mashape.com"
+    }
+  }).then(updateQuote);
 
 };
 
