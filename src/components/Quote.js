@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import apiConfig from '../apiKeys';
+import apiConfig from '../.apiKeys';
 
 // Quote fetches and displays a random quote
 class Quote extends Component {

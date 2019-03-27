@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^1.2.1",
+    "@material-ui/core": "^3.9.2",
     "axios": "^0.18.0",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5",
     "react-scripts": "1.1.4",
-    "unirest": "^0.5.1"
+    "unirest": "^0.6.0"
   },
   "scripts": {
     "start": "react-scripts start",
