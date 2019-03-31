@@ -1,10 +1,12 @@
 import  React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import List from './components/List';
 
 
-class App extends React.Component {
+class App extends Component {
   render() {
-    return <div>"hello world"</div>
+    return (
+      <List />
+    )
   }
 }
 
