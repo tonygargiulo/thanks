@@ -1,11 +1,13 @@
 import  React, { Component } from 'react';
-import List from './components/List';
+import GratList from './components/GratList';
+
+import './index.css';
 
 
 class App extends Component {
   render() {
     return (
-      <List />
+      <GratList />
     )
   }
 }
