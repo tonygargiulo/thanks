@@ -10,6 +10,7 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
+import truncate from 'lodash.truncate';
 
 
 
@@ -24,7 +25,7 @@ function GratList() {
         <List dense={true}>
           {items.map(item =>
             <ListItem key={item.id}>
-              <ListItemText primary={item.text} />
+              <ListItemText primary={truncate(item.text, {'length': 60})} />
               <IconButton onClick={() => handleDeleteItem(item.id)} aria-label="Delete"><DeleteIcon /></IconButton>
             </ListItem>)}
         </List>
